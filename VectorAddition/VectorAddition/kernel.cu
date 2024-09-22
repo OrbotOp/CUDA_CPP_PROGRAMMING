@@ -47,7 +47,7 @@ int main()
     //launch the kernal with n threads
     int blockSize = 256;
     int numBlocks = (n + blockSize - 1) / blockSize;
-    add << <numBlocks, blockSize >> > (d_a, d_b, d_c, n);
+    add<<<numBlocks, blockSize>>>(d_a, d_b, d_c, n);
 
     //copy the output back to the host using 
     cudaMemcpy(h_c, d_c, size, cudaMemcpyDeviceToHost);
